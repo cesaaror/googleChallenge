@@ -1,38 +1,253 @@
+/* Variables */
+:root {
+  --primary-color: #0078d4;
+  --primary-color-dark: #005a9e;
+  --primary-color-hover: #004080;
+  --accent-color: #ffa500;
+  --background-light: #f3f4f6;
+  --background-dark: #e2e4e8;
+  --text-color: #333;
+  --text-color-light: #666;
+  --font-family: "Segoe UI", Arial, sans-serif;
+  --box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* General Styles */
 .App {
   text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
+  font-family: var(--font-family);
+  background: linear-gradient(to bottom, var(--background-light), var(--background-dark));
+  color: var(--text-color);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  overflow-x: hidden;
+}
+
+/* Header */
+.App-header {
+  background: linear-gradient(90deg, var(--primary-color-dark), var(--primary-color));
   color: white;
+  padding: 1.5rem;
+  box-shadow: var(--box-shadow);
+  animation: fadeInDown 0.8s ease-out;
 }
 
-.App-link {
-  color: #61dafb;
+.App-header h1 {
+  margin: 0;
+  font-size: 2.8rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
 }
 
-@keyframes App-logo-spin {
+/* Navigation */
+nav {
+  margin: 1rem 0;
+}
+
+nav button {
+  background-color: white;
+  color: var(--primary-color);
+  border: 2px solid var(--primary-color);
+  border-radius: 25px;
+  margin: 0 0.5rem;
+  padding: 0.6rem 1.5rem;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+}
+
+nav button.active {
+  background-color: var(--primary-color);
+  color: white;
+  box-shadow: 0 4px 10px rgba(0, 120, 212, 0.5);
+  transform: scale(1.1);
+}
+
+nav button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 3px 8px rgba(0, 120, 212, 0.3);
+}
+
+nav button:focus {
+  outline: 2px solid var(--accent-color);
+}
+
+/* Main Content */
+main {
+  flex: 1;
+  padding: 2rem;
+  animation: fadeIn 0.8s ease;
+}
+
+textarea {
+  width: 80%;
+  max-width: 700px;
+  padding: 1rem;
+  margin: 1rem 0;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: var(--box-shadow);
+  resize: vertical;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+textarea:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 10px rgba(0, 120, 212, 0.5);
+}
+
+/* Buttons */
+button {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 0.75rem 2rem;
+  margin: 1rem 0;
+  font-size: 1rem;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  background-color: var(--primary-color-dark);
+  box-shadow: var(--box-shadow);
+}
+
+button:disabled {
+  background-color: #ccc;
+  color: var(--text-color-light);
+  cursor: not-allowed;
+}
+
+/* Translation Result */
+div h3 {
+  color: var(--primary-color);
+  margin-top: 1rem;
+}
+
+div p {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  margin: 1rem 0;
+}
+
+/* Footer */
+footer {
+  padding: 1rem;
+  font-size: 0.9rem;
+  color: var(--text-color-light);
+  background-color: var(--background-dark);
+  border-top: 1px solid #ddd;
+  box-shadow: 0 -1px 5px rgba(0, 0, 0, 0.1);
+  animation: fadeInUp 0.8s ease;
+}
+
+/* Animations */
+@keyframes fadeIn {
   from {
-    transform: rotate(0deg);
+    opacity: 0;
+    transform: translateY(10px);
   }
   to {
-    transform: rotate(360deg);
+    opacity: 1;
+    transform: translateY(0);
   }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .App-header h1 {
+    font-size: 2rem;
+  }
+
+  textarea {
+    width: 90%;
+    font-size: 0.9rem;
+  }
+
+  nav button {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .App-header h1 {
+    font-size: 1.5rem;
+  }
+
+  nav button {
+    width: 100%;
+    margin: 0.5rem 0;
+  }
+
+  textarea {
+    width: 100%;
+  }
+}
+
+/* Quick Translation Buttons */
+.translation-buttons button {
+  background-color: var(--primary-color);
+  color: white;
+  border: 2px solid transparent;
+  padding: 0.75rem 1.5rem;
+  margin: 0.5rem;
+  font-size: 1rem;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  box-shadow: var(--box-shadow);
+}
+
+.translation-buttons button:hover {
+  background-color: var(--primary-color-dark);
+  border-color: #003a6b;
+  transform: scale(1.1);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.translation-buttons button:active {
+  background-color: var(--primary-color-hover);
+  transform: scale(1.05);
+}
+
+.translation-buttons button:disabled {
+  background-color: #ccc;
+  color: var(--text-color-light);
+  border-color: #aaa;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.translation-buttons button:focus-visible {
+  outline: 2px solid var(--accent-color);
+  outline-offset: 2px;
 }
