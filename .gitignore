@@ -33,3 +33,4 @@ Thumbs.db
 # Miscellaneous
 *.log
 *.lock
+"service-account.json" 
